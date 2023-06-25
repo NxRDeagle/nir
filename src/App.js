@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 
-function App() {
+import Header from './components/header';
+import Registration from './pages/registration';
+import Login from './pages/login';
+import Choosing from './pages/choosing';
+import XSS from './pages/XSS';
+import SQL_injection from './pages/SQL_injection';
+
+import '../src/styles/main.css';
+
+const App = () => {
+  const [isAuthorized, setIsAuthorized] = React.useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main_container">
+      <Header />
+      <Routes>
+        <Route path="/" element={<Registration />} />
+        <Route path="/registration" element={<Registration />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/choosing" element={<Choosing />} />
+        <Route path="/xss" element={<XSS />} />
+        <Route path="/sql_injection" element={<SQL_injection />} />
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;
